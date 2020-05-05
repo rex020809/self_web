@@ -1,0 +1,705 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta name="renderer" content="webkit|ie-stand" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>jQuery.submit() 函数详解 - CodePlayer | 代码玩家</title>
+			<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<!--[if lt ie 9]>
+	<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/CodePlayer/webfont-noto@1.5/dist/NotoSans/NotoSansCJKsc-hinted/subset/NotoSansCJKsc-hinted-standard/font.css" />
+<link rel="stylesheet" type="text/css" href="/public/css/codeplayer.min.css?v=12" />
+<link rel="stylesheet" type="text/css" href="/public/css/user.min.css?v=8" />
+	
+			
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-1918455271107795",
+			enable_page_level_ads: true
+		});
+	</script>
+	</head>
+
+<body>
+	<div id="upgradeBrowser" class="text-center">您的浏览器过于古老 & 陈旧。为了更好的访问体验， 请 <a rel="nofollow" href="https://browsehappy.osfipin.com/" target="_blank">升级你的浏览器</a>。</div>
+	<div class="wrapper">
+						<header class="clearfix">
+			<div class="container">
+				<div class="row">
+					<h1 class="col-lg-2 logo">
+						<a class="logo-bg" href="/" title="CodePlayer">CodePlayer</a>
+					</h1>
+					<nav id="J_globalNav" class="col-lg-5 nav navbar-collapse collapse">
+						<ul class="nav-menu nav-tabs list-inline">
+							<li><a href="/">首页</a></li>
+														<li><a href="/tutorial/" title="教程" >教程</a></li>
+														<li><a href="/question/" title="问答" >问答</a></li>
+														<li><a href="/blog/" title="专栏" >专栏</a></li>
+														<li><a href="/code/" title="代码" >代码</a></li>
+														<li><a href="/tool/" title="工具" >工具</a></li>
+														<li><a href="/news/" title="资讯" >资讯</a></li>
+														<li><a href="/tag/" title="标签" >标签</a></li>
+													</ul>
+					</nav>
+					<div class="m-nav-menu collapse">
+						<a id="J_toggleNavMenu" href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+					</div>
+					<div class="col-lg-3 nav-search">
+						<form action="/search">
+							<div class="form-group">
+								<input name="q" type="text" class="input-search form-control" placeholder="搜索" />
+								<button class="btn btn-link form-control-feedback btn-search">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							</div>
+						</form>
+					</div>
+					<div class="col-lg-2 nav-user-stat">
+										            <a class="user-login" href="/user/login"><span class="glyphicon glyphicon-log-in"></span> 登录</a> 
+				            <a class="user-reg" href="/user/register"><span class="glyphicon glyphicon-user"></span> 注册</a>
+											</div>
+				</div>
+			</div>
+		</header>
+				
+		<div class="content page-detail container">
+	<nav class="site-loc">
+		<ol class="breadcrumb">
+			<li><a href="/">首页</a></li>
+							<li><a href="/tutorial/">教程</a></li>
+				<li class="active">文章详情</li>
+					</ol>
+	</nav>
+	<div class="row">
+		<main class="subject subject-main col-lg-9">
+			<section class="page-main">
+				<section class="item-meta avatar-wrapper">
+					<div class="user-avatar">
+						<div class="abs-center">
+							<img src="/public/image/default-avatar.png" />
+						</div>
+					</div>
+					<a class="meta-user" href="/u/ready">Ready</a>										<span class="meta-date">发布于2014年09月05日 11:42</span>
+									</section>
+
+				<h2 class="title">
+					<small class="flag source-type flag-original">原创</small>
+					jQuery.submit() 函数详解				</h2>
+
+				<section class="item-stats">
+										<span class="stat-view">4108 次浏览</span>
+										<span class="estimate-time">读完需要≈ 8 分钟</span>
+									</section>
+
+				<article class="data-target entry-content line-numbers" data-type="Post" data-user-id="j7s6u" data-id="j7sra" comment-open="true">
+					<div id="J_toc">
+						<h4 class="toc-ignore">内容目录</h4>
+						<div class="toc-panel"></div>
+					</div>
+					<p><code>submit()</code>函数用于<strong>为每个匹配元素的submit事件绑定处理函数</strong>。该函数也可用于触发submit事件。此外，你还可以额外传递给事件处理函数一些数据。</p>
+<p>submit事件会在表单被提交时触发。该事件仅适用于&lt;form&gt;元素。</p>
+<p>此外，你可以为同一元素多次调用该函数，从而绑定多个事件处理函数。触发submit事件时，jQuery会按照绑定的先后顺序依次执行绑定的事件处理函数。</p>
+<p>要删除通过<code>submit()</code>绑定的事件，请使用<a href="/p/j7sqt" target="_blank" title="jQuery.unbind() 函数详解" rel="nofollow">unbind()</a>函数。</p>
+<p>该函数属于<code>jQuery</code>对象(实例)。</p>
+<h3>语法</h3>
+<pre class="language-js"><code>jQueryObject.submit( [ [ data ,]  handler ] )</code></pre>
+<p>如果指定了至少一个参数，则表示<span class="blue">绑定</span>submit事件的处理函数；没有指定任何参数，则表示<span class="blue">触发</span>submit事件。</p>
+<h3>参数</h3>
+<table>
+    <tbody>
+        <tr class="firstRow">
+            <th>参数</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+            <td>data</td>
+            <td><span class="notice">可选/任意类型</span>触发事件时，需要通过<a href="/p/j7sq3" target="_blank" title="jQuery Event.data 属性详解" rel="nofollow">event.data</a>传递给事件处理函数的任意数据。</td>
+        </tr>
+        <tr>
+            <td>handler</td>
+            <td><span class="notice">可选/Function类型</span>指定的事件处理函数。</td>
+        </tr>
+    </tbody>
+</table>
+<p>jQuery <span class="notice">1.4.3 新增支持</span>：<code>submit()</code>支持<code>data</code>参数。</p>
+<p>参数<code>handler</code>中的<code>this</code>指向当前DOM元素。<code>submit()</code>还会为<code>handler</code>传入一个参数：表示当前事件的<a href="/p/j7sql" target="_blank" title="jQuery Event对象的属性和方法" rel="nofollow">Event对象</a>。</p>
+<p>如果函数<code>handler</code>的返回值为<code>false</code>，则表示阻止元素的默认事件行为，并停止事件在DOM树中冒泡。例如，&lt;a&gt;链接的click事件的处理函数返回<code>false</code>，可以阻止链接的默认URL跳转行为。&lt;form&gt;表单的submit事件的处理函数返回<code>false</code>，可以阻止表单默认的表单提交行为。</p>
+<h3>返回值</h3>
+<p><code>submit()</code>函数的返回值为<span class="notice">jQuery类型</span>，返回当前jQuery对象本身。</p>
+<h3>示例&amp;说明</h3>
+<p>请参考下面这段初始HTML代码：</p>
+<pre class="language-html"><code>&lt;form id="myForm" action="https://codeplayer.vip" method="post"&gt;
+	&lt;input id="name" name="name" type="text" value="CodePlayer" /&gt;&lt;br&gt;
+	&lt;input id="age" name="age" type="text" value="20" /&gt;&lt;br&gt;
+	&lt;input type="submit" value="提交" /&gt;
+&lt;/form&gt;
+&lt;div id="msg"&gt;&lt;/div&gt;</code></pre>
+<p>现在，我们为&lt;form&gt;元素的submit事件绑定处理函数(可以绑定多个，触发时按照绑定顺序依次执行)：</p>
+<pre class="language-js"><code>$("form").submit( function(event){
+	if( !$("#name").val() ){
+		alert("姓名不能为空!");
+		return false; // 返回值为false，将阻止表单提交
+	}else if( !$("#age").val() ){
+		alert("年龄不能为空!");
+		return false; // 返回值为false，将阻止表单提交
+	}
+} );
+
+
+// 触发form元素的submit事件
+// $("form").submit( );</code></pre>
+<p><a class="run" href="/diy.php?f=jquery-submit-demo" title="运行代码" target="_blank" rel="nofollow">运行代码</a>(以下代码请自行复制到演示页面运行)</p>
+<p>我们还可以为事件处理函数传递一些附加的数据。此外，通过jQuery为事件处理函数传入的参数<a href="/p/j7sql" target="_blank" title="jQuery Event对象的属性和方法" rel="nofollow">Event对象</a>，我们可以获取当前事件的相关信息(比如事件类型、触发事件的DOM元素、附加数据等)：</p>
+<pre class="language-js"><code>var map = { name: "姓名", age: "年龄" };
+
+$("form").submit( map, function(event){
+	var labelMap = event.data;
+	var label = '';
+
+	// 循环验证所有text元素是否为空
+	$(this).find(":text").each(function(){
+		if( !this.value ){
+			label = labelMap[this.name];
+			return false;
+		}		
+	});
+	
+	if( label ){
+		alert( label + "不能为空!" );
+		return false;
+	}
+} );</code></pre>									</article>
+
+				<div class="note">
+<ul class="join-group">
+	<li><label>CodePlayer 技术交流群1（已满）</label>： <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=61a47dc8caba9cfa153606bd86219f537557950e533e9c43a95d974b58eac6ef"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="CodePlayer技术交流群1" title="CodePlayer技术交流群1"></a></li>
+	<li><label>CodePlayer 技术交流群2</label>： <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=2b00466041ddb8c79c3dc624604f994ac2cef86817a9cca3da3b7b80c4e875b9"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="CodePlayer技术交流群2" title="CodePlayer技术交流群2"></a></li>
+</ul>
+</div>				<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/CodePlayer/CDN@1.10/code/cp-prism.min.css" />
+<div id="toolbar" class="toolbar item-stats">
+	<span class="stat-score" data-action="score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+	<a class="icon-dig" data-action="dig" title="顶">88</a>
+	<a class="icon-bury" data-action="bury" title="踩">16</a>
+		<a class="icon-edit" data-link="/p/j7sra/edit" title="编辑">编辑</a>
+			<a class="icon-report" data-action="report" title="举报">举报</a>
+	<a data-action="mark" title="标记"><i class="glyphicon glyphicon-paperclip bs-icon"></i>标记</a>
+	<a class="icon-collect" data-type="collect" data-action="add" title="收藏">收藏</a>
+			<a class="icon-donate J_donate" title="打赏" data-alipay="HTTPS://QR.ALIPAY.COM/FKX09965Q18VGGSVZCST4A?t=1558591902782" data-wechat="wxp://f2f0p9gcTzqC2v-i3PLYgBaqPKxzznn5OW0r">打赏</a>
+		<a class="icon-share J_share" title="分享">分享</a>
+		</div>
+			</section>
+
+			<section>
+				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-format="autorelaxed"
+				     data-ad-client="ca-pub-1918455271107795"
+				     data-ad-slot="7074299456"></ins>
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</section>
+
+						<section class="page-action-panel comment-panel">
+	<h3 id="comments">0 条评论</h3>
+		
+		
+	
+		<div class="toolbar">
+		<h4>撰写评论</h4>
+		<form data-upload="Comment">
+			<div class="form-group J_with-eval">
+				<textarea name="content" class="form-control J_markdown" rows="4" placeholder="文明社会，理性评论；请不要发表与本文无关的内容（支持Markdown语法）"></textarea>
+			</div>
+			<div class="form-group">
+				<input type="button" data-type="comment" data-action="add" class="btn btn-success btn-content" value="提交" />
+			</div>
+		</form>
+	</div>
+	
+</section>
+
+<script id="tplReplyForm" type="text/html">
+	<form class="reply-form" data-upload="Comment">
+		<div class="row">
+			<div class="col-lg-10">
+				<textarea class="form-control J_markdown" name="content" rows="1" placeholder="请输入回复内容，支持Markdown" onkeydown="autoHeight(this)"></textarea>
+			</div>
+			<div class="col-lg-2">
+				<input type="button" data-type="reply" data-action="add" class="btn btn-success btn-content" value="提交回复" />
+			</div>
+		</div>
+	</form>
+</script>
+
+<script id="tplEditForm" type="text/html">
+	<form class="comment-edit-form" data-upload="Comment/{id}">
+		<div class="row">
+			<div class="col-lg-10">
+				<textarea class="form-control J_markdown" name="content" rows="2" placeholder="请输入评论内容，支持Markdown" onkeydown="autoHeight(this)">{content}</textarea>
+			</div>
+			<div class="col-lg-2">
+				<input type="button" data-action="cancel" class="btn-link" value="取消修改" />
+				<input type="button" data-type="reply" data-action="edit" class="btn btn-sm btn-success btn-content" value="保存修改" />
+			</div>
+		</div>
+	</form>
+</script>
+
+<script id="tplReportForm" type="text/html">
+	<form class="report-form">
+		<div>
+			<div>
+				<input name="compilerType" value="ADVERT" type="radio"/><label>广告内容<span class="remark">（广告、招聘、推广）</span></label>
+			</div>
+			<div>
+				<input name="compilerType" value="ILLEGAL" type="radio"/><label>违规内容<span class="remark">（违法违规、色情血腥暴力）</span></label>
+			</div>
+			<div>
+				<input name="compilerType" value="UNAUTHORIZED" type="radio"/><label>侵权内容<span class="remark">（侵害他人合法权益）</span></label>
+			</div>
+			<div>
+				<input name="compilerType" value="UNFRIENDLY" type="radio"/><label>不友善内容<span class="remark">（人身攻击、挑衅辱骂、恶意脚本等）</span></label>
+			</div>
+			<div>
+				<input name="compilerType" value="OTHER" type="radio"/><label>其它<span class="remark">（请在下面补充说明）</span></label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-10">
+				<textarea class="form-control J_markdown" name="content" rows="1" placeholder="您可以详细描述其不良行为（选填），支持Markdown" onkeydown="autoHeight(this)"></textarea>
+			</div>
+			<div class="col-lg-2">
+				<input type="button" data-type="report" data-action="add" class="btn btn-success btn-report" value="提交" />
+			</div>
+		</div>
+	</form>
+</script>
+
+<script id="tplMarkForm" type="text/html">
+	<form class="mark-form">
+		<div>
+			<div>
+				<input name="markType" value="OBSOLETE" type="radio"/><label>内容过时</label>
+			</div>
+			<div class="row">
+				<div class="col-lg-2">
+					<input name="markType" value="REPEAT" type="radio"/><label>内容重复</label>
+				</div>
+				<div class="col-lg-8" style="display: none;" id="J_contentRepeat">
+					<textarea class="form-control" name="title" id="J_repeatTitle" rows="1" placeholder="请输入重复内容的标题"></textarea>
+					<input name="assocId" type="hidden"/>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-10">
+				<textarea class="form-control" name="content" rows="1" placeholder="您可以详细描述原因" onkeydown="autoHeight(this)"></textarea>
+			</div>
+			<div class="col-lg-2">
+				<input type="button" data-type="mark" data-action="add" class="btn btn-success btn-mark" value="提交" />
+			</div>
+		</div>
+	</form>
+</script>
+
+<script id="tplReplyItem" type="text/html">
+	<section id="Comment_{id}" class="item avatar-wrapper" data-type="Reply" data-user-id="{user.id}" data-id="{id}">
+		<div class="user-avatar">
+			<div class="abs-center">
+				<img src="{user.imageURL}" />
+			</div>
+		</div>
+		<div class="item-body">
+			<div class="item-meta user-summary">
+				<a class="meta-user" href="{user.URL}">{user.nickname}</a>
+				<#	if (identityMap[user.id]) { #>
+					<span class="meta-owner">{identityMap[user.id]}</span>
+				<#	}
+					if (replyFor != null) { #>
+						回复 <a class="meta-user" href="{replyFor.user.URL}">{replyFor.user.nickname}</a>
+						<# if (identityMap[replyFor.user.id]) { #>
+							<span class="meta-owner">{identityMap[replyFor.user.id]}</span>
+				<#	    }
+					} #>
+				<span class="meta-date">· {addTimeLabel}</span>
+			</div>
+			<div class="item-content">{content}</div>
+			<div class="toolbar item-stats">
+				<a class="icon-dig" data-action="dig" title="顶">0</a>
+				<a class="icon-bury" data-action="bury" title="踩">0</a>
+				<a class="icon-reply" data-action="reply" title="回复">回复</a>
+				<# if (canEdit) #>
+				<a class="icon-edit" data-action="edit" title="编辑">编辑</a>
+				<# endif #>
+				<# if (canDelete) #>
+				<a data-action="remove" title="删除"><i class="glyphicon glyphicon-remove bs-icon"></i>删除</a>
+				<# endif #>
+				<a class="icon-report" data-action="report" title="举报"></a>
+							</div>
+		</div>
+	</section>
+</script>
+
+<script id="tplCommentItem" type="text/html">
+	<section id="Comment_{id}" class="item avatar-wrapper" data-type="Comment" data-user-id="{user.id}" data-id="{id}">
+		<div class="user-avatar">
+			<div class="abs-center">
+				<img src="{user.imageURL}" />
+			</div>
+		</div>
+		<div class="item-body">
+			<div class="item-meta user-summary">
+				<a class="meta-user" href="{user.URL}">{user.nickname}</a>
+				<#	if (identityMap[user.id]) { #>
+					<span class="meta-owner">{identityMap[user.id]}</span>
+				<#	} #>
+				{user.skills}
+				<span class="meta-date">· {addTimeLabel}</span>
+			</div>
+			<div class="item-content">{content}</div>
+			<div class="toolbar item-stats">
+				<a class="icon-dig" data-action="dig" title="顶">{digCount}</a>
+				<a class="icon-bury" data-action="bury" title="踩">{buryCount}</a>
+				<a class="icon-reply" data-action="reply" title="回复">{commentCount}</a>
+				<# if (canEdit) #>
+					<a class="icon-edit" data-action="edit" title="编辑">编辑</a>
+				<# endif #>
+				<# if (canDelete) #>
+					<a data-action="remove" title="删除"><i class="glyphicon glyphicon-remove bs-icon"></i>删除</a>
+				<# endif #>
+				<a class="icon-report" data-action="report" title="举报"></a>
+			</div>
+			<# var moreSize = commentCount - size;
+				if (children != null) { #>
+			<div class="embed-replies">
+				<#	for(var i in children){
+					var c = children[i]; #>
+				<section class="item avatar-wrapper" data-type="Reply" data-user-id="{c.user.id}" data-id="{c.id}">
+					<div class="user-avatar">
+						<div class="abs-center">
+							<img src="{c.user.imageURL}" />
+						</div>
+					</div>
+					<div class="item-body">
+						<div class="item-meta user-summary">
+							<a class="meta-user" href="{c.user.URL}">{c.user.nickname}</a>
+							<#	if (identityMap[c.user.id]) { #>
+								<span class="meta-owner">{identityMap[c.user.id]}</span>
+							<#	}
+								if (c.replyFor != null) { #>
+									回复 <a class="meta-user" href="{c.replyFor.user.URL}">{c.replyFor.user.nickname}</a>
+									<# if (identityMap[c.replyFor.user.id]) { #>
+										<span class="meta-owner">{identityMap[c.replyFor.user.id]}</span>
+							<#	    }
+								} #>
+							<span class="meta-date">· {c.addTimeLabel}</span>
+						</div>
+						<div class="item-content">{c.content}</div>
+						<div class="toolbar item-stats">
+							<a class="icon-dig" data-action="dig" title="顶">{c.digCount}</a>
+							<a class="icon-bury" data-action="bury" title="踩">{c.buryCount}</a>
+							<a class="icon-reply" data-action="reply" title="回复">回复</a>
+							<# if (canEdit) #>
+								<a class="icon-edit" data-action="edit" title="编辑">编辑</a>
+							<# endif #>
+							<# if (canDelete) #>
+								<a data-action="remove" title="删除"><i class="glyphicon glyphicon-remove bs-icon"></i>删除</a>
+							<# endif #>
+							<a class="icon-report" data-action="report" title="举报"></a>
+													</div>
+					</div>
+				</section>
+				<#	} #>
+
+				<#	if (moreSize > 0) { #>
+				<div class="toolbar">
+					<a data-action="list" data-start="{size}">展开剩余 {moreSize} 条回复</a>
+				</div>
+				<#	} #>
+
+			</div>
+			<#	} #>
+		</div>
+	</section>
+</script>
+
+<script id="tplChatCommentItem" type="text/html">
+	<section class="page-action-panel comment-panel">
+		<h3 style="margin-left: 25px">{ children.length } 条回复</h3>
+		<section class="item avatar-wrapper" data-type="Reply" data-user-id="{user.id}" data-id="{id}">
+			<div class="user-avatar">
+				<div class="abs-center">
+					<img src="{user.imageURL}" />
+				</div>
+			</div>
+			<div class="item-body">
+				<div class="item-meta user-summary">
+					<a class="meta-user" href="{user.URL}">{user.nickname}</a>
+					<#	if (identityMap[user.id]) { #>
+						<span class="meta-owner">{identityMap[user.id]}</span>
+					<#	} #>
+					{user.skills}
+					<span class="meta-date">· {addTimeLabel}</span>
+				</div>
+				<div class="item-content">{content}</div>
+				<div class="toolbar item-stats">
+					<a class="icon-dig" data-action="dig" title="顶">{digCount}</a>
+					<a class="icon-bury" data-action="bury" title="踩">{buryCount}</a>
+					<a class="icon-reply" data-action="reply" title="回复">{children.length}</a>
+					<# if (canEdit) #>
+					<a class="icon-edit" data-action="edit" title="编辑">编辑</a>
+					<# endif #>
+					<# if (canDelete) #>
+					<a data-action="remove" title="删除"><i class="glyphicon glyphicon-remove bs-icon"></i>删除</a>
+					<# endif #>
+					<a class="icon-report" data-action="report" title="举报"></a>
+				</div>
+				<# if (children != null) { #>
+				<div class="embed-replies chat">
+					<#	for(var i in children){
+						var c = children[i]; #>
+					<section class="item avatar-wrapper" data-type="Reply" data-user-id="{c.user.id}" data-id="{c.id}">
+						<div class="user-avatar">
+							<div class="abs-center">
+								<img src="{c.user.imageURL}" />
+							</div>
+						</div>
+						<div class="item-body">
+							<div class="item-meta user-summary">
+								<a class="meta-user" href="{c.user.URL}">{c.user.nickname}</a>
+								<#	if (identityMap[c.user.id]) { #>
+									<span class="meta-owner">{identityMap[c.user.id]}</span>
+								<#	}
+									if (c.replyFor != null) { #>
+										回复 <a class="meta-user" href="{c.replyFor.user.URL}">{c.replyFor.user.nickname}</a>
+										<# if (identityMap[c.replyFor.user.id]) { #>
+										<span class="meta-owner">{identityMap[c.replyFor.user.id]}</span>
+									<#	    }
+										} #>
+								<span class="meta-date">· {c.addTimeLabel}</span>
+							</div>
+							<div class="item-content">{c.content}</div>
+							<div class="toolbar item-stats">
+								<a class="icon-dig" data-action="dig" title="顶">{c.digCount}</a>
+								<a class="icon-bury" data-action="bury" title="踩">{c.buryCount}</a>
+								<a class="icon-reply" data-action="reply" title="回复">{children.length}</a>
+								<# if (canEdit) #>
+								<a class="icon-edit" data-action="edit" title="编辑">编辑</a>
+								<# endif #>
+								<# if (canDelete) #>
+								<a data-action="remove" title="删除"><i class="glyphicon glyphicon-remove bs-icon"></i>删除</a>
+								<# endif #>
+								<a class="icon-report" data-action="report" title="举报"></a>
+							</div>
+						</div>
+					</section>
+					<#	} #>
+				</div>
+				<#	} #>
+			</div>
+		</section>
+	</section>
+</script>
+
+<form id="J_evalForm" style="display:none" data-upload="Comment">
+	<div class="eval-box">
+		<input name="score" type="hidden" class="score-range" value="0" />
+		<input type="button" data-action="eval" class="btn btn-success btn-eval" value="提交" />
+		<input type="button" data-action="close" class="btn btn-default btn-close-eval" value="关闭" />
+	</div>
+	<div class="form-group" style="display: none">
+		<textarea name="content" class="form-control J_markdown" rows="4"
+			placeholder="如批评不自由，则赞美无意义。不过批评的意义在于改进，希望您能指出具体的不足之处，以便于作者有针对性地进行内容改进(支持Markdown语法，不少于15字)。"></textarea>
+	</div>
+</form>
+
+<script id="tplEvalBox" type="text/html">
+	<div class="eval-box">
+		<label>同时评分：</label><input name="score" type="hidden" class="score-range" />
+	</div>
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/CodePlayer/CDN@1.1/jrange/jquery.range.css" />
+			
+		</main>
+
+		<aside class="widgets col-lg-3">
+						
+			<section class="widget related-posts item-list">
+				<h3 class="title">相关文章</h3>
+				<ul class="list-unstyled">
+										<li>
+						<a class="title" href="/p/j7tlp">SSH保持连接-心跳检测</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2020-04-16</span>
+						</div>
+					</li>
+										<li>
+						<a class="title" href="/p/j7tln">Excelize - Go 语言 (golang) Excel 文档基础库</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2020-04-11</span>
+						</div>
+					</li>
+										<li>
+						<a class="title" href="/p/j7tlj">Linux查找文件-find命令</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2020-02-04</span>
+						</div>
+					</li>
+										<li>
+						<a class="title" href="/p/j7tli">Ant Design Vue + Golang 实现前后端分离系统</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2020-01-15</span>
+						</div>
+					</li>
+										<li>
+						<a class="title" href="/p/j7tlh">使用Docker搭建开发环境</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2020-04-03</span>
+						</div>
+					</li>
+										<li>
+						<a class="title" href="/p/j7tl4">shiftKey 事件属性</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2019-12-19</span>
+						</div>
+					</li>
+										<li>
+						<a class="title" href="/p/j7tl3">screenY 事件属性</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2019-12-19</span>
+						</div>
+					</li>
+										<li>
+						<a class="title" href="/p/j7tl2">screenX 事件属性</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2019-12-19</span>
+						</div>
+					</li>
+										<li>
+						<a class="title" href="/p/j7tl1">relatedTarget 事件属性</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2019-12-19</span>
+						</div>
+					</li>
+										<li>
+						<a class="title" href="/p/j7tl0">metaKey 事件属性</a>
+						<div class="item-meta">
+							<span class="stat-score"><label>评分</label><span title="数据不足，暂无评分">?</span></span>
+							<span class="stat-date pull-right">2019-12-19</span>
+						</div>
+					</li>
+									</ul>
+			</section>
+		</aside>
+	</div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tocbot@4.6.0/dist/tocbot.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+<div id='treeWrap' style='max-height: 738px;'><ul id='tree' role='navigation'><li><div class='haschild open'><i></i><dfn>jQuery</dfn></div><ul class='open'><li><div><a href="/p/j7sua" title="jQuery 快速入门教程">快速入门教程</a></li><li><div class='haschild'><i></i><dfn>核心</dfn></div><ul><li><div><a href="/p/j7sl8" title="jQuery jQuery() 函数详解">jQuery()</a></li><li><div><a href="/p/j7snj" title="jQuery.noConflict() 函数详解">noConflict()</a></li><li><div><a href="/p/j7sna" title="jQuery.selector 属性详解">selector</a></li><li><div><a href="/p/j7snb" title="jQuery.context 属性详解">context</a></li><li><div><a href="/p/j7sn8" title="jQuery.length 属性详解">length</a></li><li><div><a href="/p/j7sn9" title="jQuery.size() 函数详解">size()</a></li><li><div><a href="/p/j7sne" title="jQuery.get() 函数详解">jQuery.get()</a></li><li><div><a href="/p/j7sng" title="jQuery.index() 函数详解">index()</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7smr" title="jQuery 选择器一览表">选择器</a></div><ul><li><div><a href="/p/j7slc" title="jQuery 选择器(*)详解">*</a></li><li><div><a href="/p/j7sl9" title="jQuery 选择器(#id)详解">#id</a></li><li><div><a href="/p/j7sla" title="jQuery 选择器(tagName)详解">tagName</a></li><li><div><a href="/p/j7slb" title="jQuery 选择器(.className)详解">.className</a></li><li><div><a href="/p/j7sld" title="jQuery 选择器(selector1,selector2,selectorN)详解">s1,2,sN</a></li><li><div><a href="/p/j7sm5" title="jQuery 选择器([selector1][selector2][selectorN])详解">[s1][s2][sN]</a></li><li><div><a href="/p/j7sle" title="jQuery 选择器(ancestor descendant)详解">ancestor descendant</a></li><li><div><a href="/p/j7slf" title="jQuery 选择器(parent &gt; child)详解">parent > child</a></li><li><div><a href="/p/j7slg" title="jQuery 选择器(prev + next)详解">prev + next</a></li><li><div><a href="/p/j7slh" title="jQuery 选择器(prev ~ siblings)详解">prev ~ siblings</a></li><li><div><a href="/p/j7sli" title="jQuery 选择器(:first)详解">:first</a></li><li><div><a href="/p/j7slj" title="jQuery 选择器(:last)详解">:last</a></li><li><div><a href="/p/j7slp" title="jQuery 选择器(:even)详解">:even</a></li><li><div><a href="/p/j7slo" title="jQuery 选择器(:odd)详解">:odd</a></li><li><div><a href="/p/j7sll" title="jQuery 选择器(:eq(index))详解">:eq(index)</a></li><li><div><a href="/p/j7slm" title="jQuery 选择器(:gt(index))详解">:gt(index)</a></li><li><div><a href="/p/j7sln" title="jQuery 选择器(:lt(index))详解">:lt(index)</a></li><li><div><a href="/p/j7slr" title="jQuery 选择器(:first-child)详解">:first-child</a></li><li><div><a href="/p/j7sls" title="jQuery 选择器(:last-child)详解">:last-child</a></li><li><div><a href="/p/j7sm4" title="jQuery 选择器(:only-child)详解">:only-child</a></li><li><div><a href="/p/j7sm3" title="jQuery 选择器(:nth-child(n))详解">:nth-child(n)</a></li><li><div><a href="/p/j7smk" title="jQuery 选择器(:nth-last-child(n))详解">:nth-last-child(n)</a></li><li><div><a href="/p/j7sn0" title="jQuery 选择器(:first-of-type)详解">:first-of-type</a></li><li><div><a href="/p/j7sn1" title="jQuery 选择器(:last-of-type)详解">:last-of-type</a></li><li><div><a href="/p/j7sn4" title="jQuery 选择器(:only-of-type)详解">:only-of-type</a></li><li><div><a href="/p/j7sn2" title="jQuery 选择器(:nth-of-type(n))详解">:nth-of-type(n)</a></li><li><div><a href="/p/j7sn3" title="jQuery 选择器(:nth-last-of-type(n))详解">:nth-last-of-type(n)</a></li><li><div><a href="/p/j7sm0" title="jQuery 选择器(:has(selector))详解">:has(selector)</a></li><li><div><a href="/p/j7slk" title="jQuery 选择器(:not(selector))详解">:not(selector)</a></li><li><div><a href="/p/j7slv" title="jQuery 选择器(:contains(text))详解">:contains(text)</a></li><li><div><a href="/p/j7slt" title="jQuery 选择器(:parent)详解">:parent</a></li><li><div><a href="/p/j7slu" title="jQuery 选择器(:empty)详解">:empty</a></li><li><div><a href="/p/j7sm1" title="jQuery 选择器(:visible)详解">:visible</a></li><li><div><a href="/p/j7sm2" title="jQuery 选择器(:hidden)详解">:hidden</a></li><li><div><a href="/p/j7slq" title="jQuery 选择器(:header)详解">:header</a></li><li><div><a href="/p/j7smu" title="jQuery 选择器(:focus)详解">:focus</a></li><li><div><a href="/p/j7sn5" title="jQuery 选择器(:root)详解">:root</a></li><li><div><a href="/p/j7sn6" title="jQuery 选择器(:target)详解">:target</a></li><li><div><a href="/p/j7sn7" title="jQuery 选择器(:lang(language))详解">:lang(language)</a></li><li><div><a href="/p/j7smv" title="jQuery 选择器(:animated)详解">:animated</a></li><li><div><a href="/p/j7sml" title="jQuery 选择器([attribute])详解">[attribute]</a></li><li><div><a href="/p/j7smm" title="jQuery 选择器([attribute=value])详解">[attribute=value]</a></li><li><div><a href="/p/j7smn" title="jQuery 选择器([attribute!=value])详解">[attribute!=value]</a></li><li><div><a href="/p/j7smo" title="jQuery 选择器([attribute^=value])详解">[attribute^=value]</a></li><li><div><a href="/p/j7smp" title="jQuery 选择器([attribute$=value])详解">[attribute$=value]</a></li><li><div><a href="/p/j7sms" title="jQuery 选择器([attribute|=value])详解">[attribute|=value]</a></li><li><div><a href="/p/j7smt" title="jQuery 选择器([attribute~=value])详解">[attribute~=value]</a></li><li><div><a href="/p/j7smq" title="jQuery 选择器([attribute*=value])详解">[attribute*=value]</a></li><li><div><a href="/p/j7sm6" title="jQuery 选择器(:input)详解">:input</a></li><li><div><a href="/p/j7sm7" title="jQuery 选择器(:text)详解">:text</a></li><li><div><a href="/p/j7sm8" title="jQuery 选择器(:password)详解">:password</a></li><li><div><a href="/p/j7sm9" title="jQuery 选择器(:radio)详解">:radio</a></li><li><div><a href="/p/j7sma" title="jQuery 选择器(:checkbox)详解">:checkbox</a></li><li><div><a href="/p/j7smd" title="jQuery 选择器(:button)详解">:button</a></li><li><div><a href="/p/j7smb" title="jQuery 选择器(:submit)详解">:submit</a></li><li><div><a href="/p/j7smf" title="jQuery 选择器(:reset)详解">:reset</a></li><li><div><a href="/p/j7smc" title="jQuery 选择器(:image)详解">:image</a></li><li><div><a href="/p/j7sme" title="jQuery 选择器(:file)详解">:file</a></li><li><div><a href="/p/j7smg" title="jQuery 选择器(:enabled)详解">:enabled</a></li><li><div><a href="/p/j7smh" title="jQuery 选择器(:disabled)详解">:disabled</a></li><li><div><a href="/p/j7smi" title="jQuery 选择器(:checked)详解">:checked</a></li><li><div><a href="/p/j7smj" title="jQuery 选择器(:selected)详解">:selected</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7sst" title="jQuery的文档筛选方法">文档筛选</a></div><ul><li><div><a href="/p/j7sns" title="jQuery.hasClass() 函数详解">hasClass()</a></li><li><div><a href="/p/j7so3" title="jQuery.is() 函数详解">is()</a></li><li><div><a href="/p/j7so0" title="jQuery.eq() 函数详解">eq()</a></li><li><div><a href="/p/j7so1" title="jQuery.first() 函数详解">first()</a></li><li><div><a href="/p/j7so2" title="jQuery.last() 函数详解">last()</a></li><li><div><a href="/p/j7so8" title="jQuery.slice() 函数详解">slice()</a></li><li><div><a href="/p/j7so7" title="jQuery.filter() 函数详解">filter()</a></li><li><div><a href="/p/j7so5" title="jQuery.has() 函数详解">has()</a></li><li><div><a href="/p/j7so6" title="jQuery.not() 函数详解">not()</a></li><li><div><a href="/p/j7snd" title="全局jQuery.each() 函数详解">each()</a></li><li><div><a href="/p/j7so4" title="jQuery.map() 函数详解">map()</a></li><li><div><a href="/p/j7so9" title="jQuery.children() 函数详解">children()</a></li><li><div><a href="/p/j7sop" title="jQuery.contents() 函数详解">contents()</a></li><li><div><a href="/p/j7soq" title="jQuery.end() 函数详解">end()</a></li><li><div><a href="/p/j7soa" title="jQuery.find() 函数详解">find()</a></li><li><div><a href="/p/j7sob" title="jQuery.next() 函数详解">find()</a></li><li><div><a href="/p/j7soc" title="jQuery.nextAll() 函数详解">nextAll()</a></li><li><div><a href="/p/j7sod" title="jQuery.nextUntil() 函数详解">nextUntil()</a></li><li><div><a href="/p/j7soe" title="jQuery.parent() 函数详解">parent()</a></li><li><div><a href="/p/j7sof" title="jQuery.parents() 函数详解">parents()</a></li><li><div><a href="/p/j7st1" title="jQuery.offsetParent() 函数详解">offsetParent()</a></li><li><div><a href="/p/j7soo" title="jQuery.closest() 函数详解">closest()</a></li><li><div><a href="/p/j7soh" title="jQuery.prev() 函数详解">prev()</a></li><li><div><a href="/p/j7soi" title="jQuery.prevAll() 函数详解">prevAll()</a></li><li><div><a href="/p/j7soj" title="jQuery.prevUntil() 函数详解">prevUntil()</a></li><li><div><a href="/p/j7sok" title="jQuery.siblings() 函数详解">siblings()</a></li><li><div><a href="/p/j7som" title="jQuery.add() 函数详解">add()</a></li><li><div><a href="/p/j7son" title="jQuery.addBack() 函数详解">addBack()</a></li><li><div><a href="/p/j7sol" title="jQuery.andSelf() 函数详解">andSelf()</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7ssv#attr" title="jQuery的文档操作方法">属性</a></div><ul><li><div><a href="/p/j7snk" title="jQuery.attr() 函数详解">attr()</a></li><li><div><a href="/p/j7snl" title="jQuery.removeAttr() 函数详解">removeAttr()</a></li><li><div><a href="/p/j7snm" title="jQuery.prop() 函数详解">prop()</a></li><li><div><a href="/p/j7snn" title="jQuery.removeProp() 函数详解">removeProp()</a></li><li><div><a href="/p/j7sno" title="jQuery函数attr()和prop()的区别">attr()和prop()的区别</a></li><li><div><a href="/p/j7snp" title="jQuery.addClass() 函数详解">addClass()</a></li><li><div><a href="/p/j7snq" title="jQuery.removeClass() 函数详解">removeClass()</a></li><li><div><a href="/p/j7snr" title="jQuery.toggleClass() 函数详解">toggleClass()</a></li><li><div><a href="/p/j7snu" title="jQuery.html() 函数详解">html()</a></li><li><div><a href="/p/j7snv" title="jQuery.text() 函数详解">text()</a></li><li><div><a href="/p/j7snt" title="jQuery.val() 函数详解">val()</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7ssv#contents" title="jQuery的文档操作方法">文档操作</a></div><ul><li><div><a href="/p/j7sp2" title="jQuery.append() 函数详解">append()</a></li><li><div><a href="/p/j7sp3" title="jQuery.appendTo() 函数详解">appendTo()</a></li><li><div><a href="/p/j7sp4" title="jQuery.prepend() 函数详解">prepend()</a></li><li><div><a href="/p/j7sp5" title="jQuery.prependTo() 函数详解">prependTo()</a></li><li><div><a href="/p/j7sp6" title="jQuery.after() 函数详解">after()</a></li><li><div><a href="/p/j7sp7" title="jQuery.before() 函数详解">before()</a></li><li><div><a href="/p/j7sp8" title="jQuery.insertAfter() 函数详解">insertAfter()</a></li><li><div><a href="/p/j7sp9" title="jQuery.insertBefore() 函数详解">insertBefore()</a></li><li><div><a href="/p/j7spa" title="jQuery.wrap() 函数详解">wrap()</a></li><li><div><a href="/p/j7spc" title="jQuery.unwrap() 函数详解">unwrap()</a></li><li><div><a href="/p/j7spb" title="jQuery.wrapAll() 函数详解">wrapAll()</a></li><li><div><a href="/p/j7spe" title="jQuery.wrapInner() 函数详解">wrapInner()</a></li><li><div><a href="/p/j7spg" title="jQuery.replaceAll() 函数详解">replaceAll()</a></li><li><div><a href="/p/j7spf" title="jQuery.replaceWith() 函数详解">replaceWith()</a></li><li><div><a href="/p/j7spd" title="jQuery.empty() 函数详解">empty()</a></li><li><div><a href="/p/j7sph" title="jQuery.remove() 函数详解">remove()</a></li><li><div><a href="/p/j7spi" title="jQuery.detach() 函数详解">detach()</a></li><li><div><a href="/p/j7spj" title="jQuery.clone() 函数详解">clone()</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7ssv#css" title="jQuery的文档操作方法">css</a></div><ul><li><div><a href="/p/j7spk" title="jQuery.css() 函数详解">css()</a></li><li><div><a href="/p/j7spl" title="jQuery.offset() 函数详解">offset()</a></li><li><div><a href="/p/j7spm" title="jQuery.position() 函数详解">position()</a></li><li><div><a href="/p/j7spo" title="jQuery.scrollLeft() 函数详解">scrollLeft()</a></li><li><div><a href="/p/j7spn" title="jQuery.scrollTop() 函数详解">scrollTop()</a></li><li><div><a href="/p/j7spp" title="jQuery.height() 函数详解">height()</a></li><li><div><a href="/p/j7spr" title="jQuery.innerHeight() 函数详解">innerHeight()</a></li><li><div><a href="/p/j7spt" title="jQuery.outerHeight() 函数详解">outerHeight()</a></li><li><div><a href="/p/j7spq" title="jQuery.width() 函数详解">width()</a></li><li><div><a href="/p/j7sps" title="jQuery.innerWidth() 函数详解">innerWidth()</a></li><li><div><a href="/p/j7spu" title="jQuery.outerWidth() 函数详解">outerWidth()</a></li><li><div><a href="/p/j7spv" title="jQuery height()、innerHeight()、outerHeight()函数的区别详解">宽度、高度3函数的区别</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7st0" title="jQuery的事件方法">事件</a></div><ul><li><div><a href="/p/j7sq0" title="jQuery.ready() 函数详解">ready()</a></li><li><div><a href="/p/j7sqs" title="jQuery.bind() 函数详解">bind()</a></li><li><div><a href="/p/j7sqt" title="jQuery.unbind() 函数详解">unbind()</a></li><li><div><a href="/p/j7sqq" title="jQuery.live() 函数详解">live()</a></li><li><div><a href="/p/j7sqr" title="jQuery.die() 函数详解">die()</a></li><li><div><a href="/p/j7sqn" title="jQuery.delegate() 函数详解">delegate()</a></li><li><div><a href="/p/j7sqp" title="jQuery.undelegate() 函数详解">undelegate()</a></li><li><div><a href="/p/j7sq1" title="jQuery.on() 函数详解">on()</a></li><li><div><a href="/p/j7sqo" title="jQuery.off() 函数详解">off()</a></li><li><div><a href="/p/j7squ" title="jQuery.one() 函数详解">one()</a></li><li><div><a href="/p/j7sqv" title="jQuery.trigger() 函数详解">trigger()</a></li><li><div><a href="/p/j7sr0" title="jQuery.triggerHandler() 函数详解">triggerHandler()</a></li><li><div><a href="/p/j7srd" title="jQuery.load() 事件函数详解">load()</a></li><li><div><a href="/p/j7sre" title="jQuery.unload() 函数详解">unload()</a></li><li><div><a href="/p/j7srf" title="jQuery.error() 函数详解">error()</a></li><li><div><a href="/p/j7srb" title="jQuery.resize() 函数详解">resize()</a></li><li><div><a href="/p/j7src" title="jQuery.scroll() 函数详解">scroll()</a></li><li><div><a href="/p/j7sr4" title="jQuery.focus() 函数详解">focus()</a></li><li><div><a href="/p/j7sr5" title="jQuery.blur() 函数详解">blur()</a></li><li><div><a href="/p/j7sr6" title="jQuery.focusin() 函数详解">focusin()</a></li><li><div><a href="/p/j7sr7" title="jQuery.focusout() 函数详解">focusout()</a></li><li><div><a href="/p/j7sr9" title="jQuery.change() 函数详解">change()</a></li><li><div><a href="/p/j7sr8" title="jQuery.select() 函数详解">select()</a></li><li><div><a href="/p/j7sra" title="jQuery.submit() 函数详解">submit()</a></li><li><div><a href="/p/j7srh" title="jQuery.keydown() 函数详解">keydown()</a></li><li><div><a href="/p/j7srg" title="jQuery.keypress() 函数详解">keypress()</a></li><li><div><a href="/p/j7sri" title="jQuery.keyup() 函数详解">keyup()</a></li><li><div><a href="/p/j7sr1" title="jQuery.click() 函数详解">click()</a></li><li><div><a href="/p/j7sr2" title="jQuery.dblclick() 函数详解">dblclick()</a></li><li><div><a href="/p/j7srs" title="jQuery.toggle() 事件函数详解">toggle()</a></li><li><div><a href="/p/j7sr3" title="jQuery.hover() 函数详解">hover()</a></li><li><div><a href="/p/j7srj" title="jQuery.mouseenter() 函数详解">mouseenter()</a></li><li><div><a href="/p/j7srl" title="jQuery.mouseleave() 函数详解">mouseleave()</a></li><li><div><a href="/p/j7srk" title="jQuery.mouseover() 函数详解">mouseover()</a></li><li><div><a href="/p/j7srm" title="jQuery.mouseout() 函数详解">mouseout()</a></li><li><div><a href="/p/j7srn" title="jQuery.mousedown() 函数详解">mousedown()</a></li><li><div><a href="/p/j7sro" title="jQuery.mouseup() 函数详解">mouseup()</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7ssv#affect" title="jQuery的文档操作方法">效果</a></div><ul><li><div><a href="/p/j7srp" title="jQuery.show() 函数详解">show()</a></li><li><div><a href="/p/j7srq" title="jQuery.hide() 函数详解">hide()</a></li><li><div><a href="/p/j7srr" title="jQuery.toggle() 函数详解">toggle()</a></li><li><div><a href="/p/j7srt" title="jQuery.slideDown() 函数详解">slideDown()</a></li><li><div><a href="/p/j7sru" title="jQuery.slideUp() 函数详解">slideUp()</a></li><li><div><a href="/p/j7srv" title="jQuery.slideToggle() 函数详解">slideToggle()</a></li><li><div><a href="/p/j7ss0" title="jQuery.fadeIn() 函数详解">fadeIn()</a></li><li><div><a href="/p/j7ss1" title="jQuery.fadeOut() 函数详解">fadeOut()</a></li><li><div><a href="/p/j7ss2" title="jQuery.fadeToggle() 函数详解">fadeToggle()</a></li><li><div><a href="/p/j7ss3" title="jQuery.animate() 函数详解">animate()</a></li><li><div><a href="/p/j7ss5" title="jQuery.delay() 函数详解">delay()</a></li><li><div><a href="/p/j7ss4" title="jQuery.stop() 函数详解">stop()</a></li><li><div><a href="/p/j7ss6" title="jQuery.finish() 函数详解">finish()</a></li><li><div><a href="/p/j7ss7" title="jQuery.fx.off 属性详解">jQuery.fx.off</a></li><li><div><a href="/p/j7ss8" title="jQuery.fx.interval 属性详解">jQuery.fx.interval</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7ssu" title="jQuery的AJAX方法">Ajax</a></div><ul><li><div><a href="/p/j7ss9" title="jQuery.ajax() 函数详解">ajax()</a></li><li><div><a href="/p/j7ssb" title="jQuery.get() AJAX函数详解">jQuery.get()</a></li><li><div><a href="/p/j7ssc" title="jQuery.post() 函数详解">jQuery.post()</a></li><li><div><a href="/p/j7ssd" title="jQuery.getJSON() 函数详解">jQuery.getJSON()</a></li><li><div><a href="/p/j7sse" title="jQuery.getScript() 函数详解">jQuery.getScript()</a></li><li><div><a href="/p/j7ssa" title="jQuery.load() AJAX函数详解">jQuery.load()</a></li><li><div><a href="/p/j7ssl" title="jQuery.ajaxPrefilter() 函数详解">ajaxPrefilter()</a></li><li><div><a href="/p/j7ssf" title="jQuery.ajaxSetup() 函数详解">ajaxSetup()</a></li><li><div><a href="/p/j7ssm" title="jQuery.serialize() 函数详解">serialize()</a></li><li><div><a href="/p/j7ssn" title="jQuery.serializeArray() 函数详解">serializeArray()</a></li><li><div><a href="/p/j7ssp" title="jQuery.param() 函数详解">jQuery.param()</a></li><li><div><a href="/p/j7ssj" title="jQuery.ajaxStart() 函数详解">ajaxStart()</a></li><li><div><a href="/p/j7st3" title="jQuery.ajaxSend() 函数详解">ajaxSend()</a></li><li><div><a href="/p/j7ssg" title="jQuery.ajaxComplete() 函数详解">ajaxComplete()</a></li><li><div><a href="/p/j7ssh" title="jQuery.ajaxSuccess() 函数详解">ajaxSuccess()</a></li><li><div><a href="/p/j7ssi" title="jQuery.ajaxError() 函数详解">ajaxError()</a></li><li><div><a href="/p/j7ssk" title="jQuery.ajaxStop() 函数详解">ajaxStop()</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7sub" title="jQuery的辅助工具属性和方法">工具</a></div><ul><li><div><a href="/p/j7ssq" title="jQuery.queue() 函数详解">queue()</a></li><li><div><a href="/p/j7ssr" title="jQuery.dequeue() 函数详解">dequeue()</a></li><li><div><a href="/p/j7sss" title="jQuery.clearQueue() 函数详解">clearQueue()</a></li><li><div><a href="/p/j7snd" title="全局jQuery.each() 函数详解">jQuery.each()</a></li><li><div><a href="/p/j7su7" title="全局jQuery.error() 函数详解">jQuery.error()</a></li><li><div><a href="/p/j7stu" title="全局jQuery.map() 函数详解">jQuery.map()</a></li><li><div><a href="/p/j7snh" title="jQuery.data() 函数详解">data()</a></li><li><div><a href="/p/j7sni" title="jQuery.removeData() 函数详解">removeData()</a></li><li><div><a href="/p/j7std" title="jQuery.boxModel 属性详解">jQuery.boxModel</a></li><li><div><a href="/p/j7ste" title="jQuery.browser 属性详解">jQuery.browser</a></li><li><div><a href="/p/j7stf" title="jQuery.support 属性详解">jQuery.support</a></li><li><div><a href="/p/j7stg" title="jQuery.contains() 函数详解">jQuery.contains()</a></li><li><div><a href="/p/j7sth" title="jQuery.extend() 函数详解">jQuery.extend()</a></li><li><div><a href="/p/j7sti" title="jQuery.fn.extend() 函数详解">jQuery.fn.extend()</a></li><li><div><a href="/p/j7stj" title="jQuery.globalEval() 函数详解">jQuery.globalEval()</a></li><li><div><a href="/p/j7stk" title="jQuery.grep() 函数详解">jQuery.grep()</a></li><li><div><a href="/p/j7stl" title="jQuery.inArray() 函数详解">jQuery.inArray()</a></li><li><div><a href="/p/j7stm" title="jQuery.isArray() 函数详解">jQuery.isArray()</a></li><li><div><a href="/p/j7stn" title="jQuery.isEmptyObject() 函数详解">jQuery.isEmptyObject()</a></li><li><div><a href="/p/j7sto" title="jQuery.isPlainObject() 函数详解">jQuery.isPlainObject()</a></li><li><div><a href="/p/j7stp" title="jQuery.isFunction() 函数详解">jQuery.isFunction()</a></li><li><div><a href="/p/j7stq" title="jQuery.isNumeric() 函数详解">jQuery.isNumeric()</a></li><li><div><a href="/p/j7str" title="jQuery.isWindow() 函数详解">jQuery.isWindow()</a></li><li><div><a href="/p/j7sts" title="jQuery.isXMLDoc() 函数详解">jQuery.isXMLDoc()</a></li><li><div><a href="/p/j7stt" title="jQuery.makeArray() 函数详解">jQuery.makeArray()</a></li><li><div><a href="/p/j7stv" title="jQuery.noop() 函数详解">jQuery.noop()</a></li><li><div><a href="/p/j7su0" title="jQuery.now() 函数详解">jQuery.now()</a></li><li><div><a href="/p/j7su1" title="jQuery.parseHTML() 函数详解">jQuery.parseHTML()</a></li><li><div><a href="/p/j7sso" title="jQuery.parseJSON() 函数详解">jQuery.parseJSON()</a></li><li><div><a href="/p/j7su2" title="jQuery.parseXML() 函数详解">jQuery.parseXML()</a></li><li><div><a href="/p/j7su4" title="jQuery.trim() 函数详解">jQuery.trim()</a></li><li><div><a href="/p/j7su5" title="jQuery.type() 函数详解">jQuery.type()</a></li><li><div><a href="/p/j7su6" title="jQuery.unique() 函数详解">jQuery.unique()</a></li></ul></li><li><div class='haschild'><i></i><a href="/p/j7sql" title="jQuery Event对象的属性和方法">事件对象</a></div><ul><li><div><a href="/p/j7sq2" title="jQuery Event.currentTarget 属性详解">currentTarget</a></li><li><div><a href="/p/j7sq3" title="jQuery Event.data 属性详解">data</a></li><li><div><a href="/p/j7sq4" title="jQuery Event.delegateTarget 属性详解">delegateTarget</a></li><li><div><a href="/p/j7sqk" title="jQuery Event.metaKey 属性详解">metaKey</a></li><li><div><a href="/p/j7sq5" title="jQuery Event.namespace 属性详解">namespace</a></li><li><div><a href="/p/j7sq6" title="jQuery Event.pageX 属性详解">pageX</a></li><li><div><a href="/p/j7sq7" title="jQuery Event.pageY 属性详解">pageY</a></li><li><div><a href="/p/j7sq8" title="jQuery Event.relatedTarget 属性详解">relatedTarget</a></li><li><div><a href="/p/j7sq9" title="jQuery Event.result 属性详解">result</a></li><li><div><a href="/p/j7sqa" title="jQuery Event.target 属性详解">target</a></li><li><div><a href="/p/j7sqc" title="jQuery Event.type 属性详解">type</a></li><li><div><a href="/p/j7sqd" title="jQuery Event.which 属性详解">which</a></li><li><div><a href="/p/j7sqb" title="jQuery Event.timeStamp 属性详解">timeStamp</a></li><li><div><a href="/p/j7sqf" title="jQuery Event.isDefaultPrevented() 函数详解">isDefaultPrevented()</a></li><li><div><a href="/p/j7sqj" title="jQuery Event.isImmediatePropagationStopped() 函数详解">isImmediatePropagationStopped()</a></li><li><div><a href="/p/j7sqh" title="jQuery Event.isPropagationStopped() 函数详解">isPropagationStopped()</a></li><li><div><a href="/p/j7sqe" title="jQuery Event.preventDefault() 函数详解">preventDefault()</a></li><li><div><a href="/p/j7sqi" title="jQuery Event.stopImmediatePropagation() 函数详解">stopImmediatePropagation()</a></li><li><div><a href="/p/j7sqg" title="jQuery Event.stopPropagation() 函数详解">stopPropagation()</a></li></ul></li></ul></li></div></div><span id='slideOut' title='收起'></span><div id='treeTips'><span id='slideIn' title='展开'></span>打开导航菜单</div>
+						<footer>
+			<div class="container normal-link">
+				<div class="row">
+					<div class="col-lg-4">
+						<div>
+							<a href="/" title="CodePlayer"><span class="logo-bg"></span></a>
+						</div>
+											</div>
+					<dl class="col-lg-2">
+						<dt>协作</dt>
+						<dd><a href="/search">高级搜索</a></dd>
+						<dd><a href="/faq">帮助中心</a></dd>
+						<dd><a href="/dashboard/">我的创作</a></dd>
+						<dd><a href="#" class="waiting">高手在民间</a></dd>
+					</dl>
+					<dl class="col-lg-2">
+						<dt>百宝箱</dt>
+						<dd><a class="waiting">自我评估</a></dd>
+						<dd><a class="waiting">鲤鱼跃龙门</a></dd>
+						<dd><a target="_blank" href="/diy.php">代码在线DIY</a></dd>
+						<dd><a rel="nofollow" target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=zb6ov7ukrqiNrqKpqL2hrLSov_Ouog">意见反馈</a></dd>
+					</dl>
+					<dl class="col-lg-2">
+						<dt>商务</dt>
+						<dd><a rel="nofollow" target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=_JqRgribl5ydiJSZgZ2K1puX">广告投放</a></dd>
+						<dd><a rel="nofollow" target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=_JqRgribl5ydiJSZgZ2K1puX">合作联系</a></dd>
+						<dd><a rel="nofollow" target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=_JqRgribl5ydiJSZgZ2K1puX">技术咨询</a></dd>
+						<dd><a rel="nofollow" target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=_JqRgribl5ydiJSZgZ2K1puX">软件开发解决方案</a></dd>
+					</dl>
+					<dl class="col-lg-2">
+						<dt>关于</dt>
+						<dd><a href="/about">关于CodePlayer</a></dd>
+						<dd><a href="/user/terms">服务条款</a></dd>
+						<dd><a class="waiting">微信公众号</a></dd>
+						<dd><a class="waiting">官方微博</a></dd>
+					</dl>
+				</div>
+			</div>
+			<div class="footer-mark">
+				<div class="container">
+					<div>Copyright Reserved 2019 ©CodePlayer（CodePlayer.vip）| 粤ICP备17102878号-2 | 深圳市永星网络科技有限公司</div>
+				</div>
+			</div>
+			<nav class="fixed-widget">
+				<a rel="nofollow" target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=zb6ov7ukrqiNrqKpqL2hrLSov_Ouog">意见反馈</a>
+				<a href="javascript:scrollTo(0,0)">返回顶部</a>
+			</nav>
+		</footer>
+					</div>
+	<script>
+		if( ~navigator.userAgent.indexOf("MSIE") ){
+			var b = document.body; b.className = b.className + " ie";
+		}
+		var root = "", CP = {};
+			</script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/sentsin/layer@3.1.1/dist/layer.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/CodePlayer/CDN@1.1/v/jquery-validator-1.3.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/js/codeplayer.min.js?v=9"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/CodePlayer/CDN@1.9/code/cp-prism.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lrsjng/jquery-qrcode@v0.17.0/dist/jquery-qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/CodePlayer/CDN@1.1/art/template-web.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/CodePlayer/CDN@1.1/jrange/jquery.range-min.js"></script>
+<script type="text/javascript" src="/public/js/page-action.min.js?v=4"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tocbot@4.6.0/dist/tocbot.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+		<div class="hide"><script async src="https://w.cnzz.com/c.php?id=1277625066&async=1"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script"), s = document.getElementsByTagName('script')[0];
+	hm.src = "https://hm.baidu.com/hm.js?9ed3b5c552e13e50de794b84941f0bb6";
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140500351-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-140500351-1');
+</script></div>
+</body>
+
+</html>
